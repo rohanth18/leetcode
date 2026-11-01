@@ -5,7 +5,7 @@ class Solution {
         {
             if(nums.length % i == 0)
             {
-                sum = sum + (nums[i-1] * nums[i-1]);
+                sum += Math.pow(nums[i-1],2);
             }
         }
         return sum;
