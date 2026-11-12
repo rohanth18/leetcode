@@ -2,16 +2,11 @@ class Solution {
     public int arrangeCoins(int n) {
         int steps = 0;
         int i = 1;
-        while(n != 0)
+        while(n >= i)
         {
-            if(n >= i)
-            {
-                steps++;
-                n = n - i;
-                i++;
-                continue;
-            }
-            break;            
+            steps++;
+            n = n - i;
+            i++;          
         }
         return steps;
     }
