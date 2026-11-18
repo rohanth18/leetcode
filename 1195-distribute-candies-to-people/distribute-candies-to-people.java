@@ -7,7 +7,16 @@ class Solution {
 
         while(candies > 0)
         {
-            int give = Math.min(candies, sum);
+            int give;
+
+            if(candies < sum)
+            {
+                give = candies;
+            }
+            else
+            {
+                give = sum;
+            }
 
             result[index] += give;
             candies -= give;
