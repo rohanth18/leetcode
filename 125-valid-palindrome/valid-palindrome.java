@@ -4,25 +4,27 @@ class Solution {
         //bcoz -- A and a should be treated same
         input = input.toLowerCase();//madam
 
-        //Step 2) Keep only letters and digits
-        //Ignore : spaces, comma, full stop, colon etc
-        String cleaned = "";
+        //Step 2
+        //Use StringBuilder as it has append() method to acoid creating new String
+
+        StringBuilder cleaned = new StringBuilder();
 
         for(int i = 0; i < input.length(); i++)
         {
             char currChar = input.charAt(i);
-            if(Character.isLetterOrDigit(currChar))//Character is in-built class has isLetterOrDigit() method
+            if(Character.isLetterOrDigit(currChar))//Check if current char is letter or digit
             {
-                cleaned = cleaned + currChar;
+                cleaned.append(currChar);
             }
         }
 
         //Step 3) Reverse the cleaned String
 
-        StringBuilder builder = new StringBuilder(cleaned);
-        String reversed = builder.reverse().toString();
+        StringBuilder reversebuilder = new StringBuilder(cleaned);
+        reversebuilder.reverse();
+        
 
         //Step 4)compare
-        return cleaned.equals(reversed);
+        return cleaned.toString().equals(reversebuilder.toString());
     }
 }
