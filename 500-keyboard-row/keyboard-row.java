@@ -1,22 +1,43 @@
 class Solution {
     public String[] findWords(String[] words) {
-        String s1 = "[qwertyuiop]+";
-        String s2 = "[asdfghjkl]+";
-        String s3 = "[zxcvbnm]+";
 
-        String[] result = new String[words.length];
-        int k = 0;
+        String row1 = "qwertyuiop";
+        String row2 = "asdfghjkl";
+        String row3 = "zxcvbnm";
 
-        for(int i = 0; i < words.length; i++)
-        {
-            String word = words[i].toLowerCase();
+        List<String> result = new ArrayList<>();
 
-            if(word.matches(s1) || word.matches(s2) || word.matches(s3))
-            {
-                result[k++] = words[i];
+        for (String word : words) {
+
+            String lower = word.toLowerCase();
+
+            String row;
+
+            if (row1.indexOf(lower.charAt(0)) != -1) {
+                row = row1;
+            }
+            else if (row2.indexOf(lower.charAt(0)) != -1) {
+                row = row2;
+            }
+            else {
+                row = row3;
+            }
+
+            boolean valid = true;
+
+            for (int i = 0; i < lower.length(); i++) {
+
+                if (row.indexOf(lower.charAt(i)) == -1) {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (valid) {
+                result.add(word);
             }
         }
 
-        return java.util.Arrays.copyOf(result, k);
+        return result.toArray(new String[0]);
     }
 }
