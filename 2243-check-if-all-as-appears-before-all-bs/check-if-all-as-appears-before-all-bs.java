@@ -1,19 +1,27 @@
 class Solution {
     public boolean checkString(String s) {
-        boolean foundB = false;
-
+        int index = -1;
         for(int i = 0; i < s.length(); i++)
         {
             if(s.charAt(i) == 'b')
             {
-                foundB = true;
+                index = i;
+                break;
             }
+        }
+        if(index == -1)
+        {
+            return true;
+        }
 
-            if(s.charAt(i) == 'a' && foundB)
+        for(int i = index; i < s.length(); i++)
+        {
+            if(s.charAt(i) == 'a')
             {
                 return false;
             }
         }
+
         return true;
     }
 }
